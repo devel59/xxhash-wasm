@@ -11,7 +11,8 @@ const supportedBrowsers = {
 
 const targets = isNode ? { node: 16 } : supportedBrowsers;
 const modules = isTest ? "commonjs" : false;
+const exclude = ["@babel/plugin-transform-parameters"];
 
 module.exports = {
-  presets: [["@babel/env", { targets, modules }]],
+  presets: [["@babel/env", { targets, modules, exclude }]],
 };

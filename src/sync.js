@@ -7,8 +7,9 @@ import { createHasher } from "./hasher";
 // eslint-disable-next-line no-undef
 const wasmBytes = new Uint8Array(WASM_PRECOMPILED_BYTES);
 
-export default async function xxhash() {
-  const wasmResult = await WebAssembly.instantiate(wasmBytes);
+export default function xxhash() {
+  const wasmModule = new WebAssembly.Module(wasmBytes);
+  const wasmInstance = new WebAssembly.Instance(wasmModule);
 
-  return createHasher(wasmResult.instance.exports);
+  return createHasher(wasmInstance.exports);
 }
