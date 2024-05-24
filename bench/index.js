@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const Benchmark = require("benchmark");
-const xxhash = require("xxhash-wasm");
+const xxhash = require("../cjs/async.cjs");
 const XXH = require("xxhashjs");
 
 // This is the highest utf-8 character that uses only one byte. A string will be
