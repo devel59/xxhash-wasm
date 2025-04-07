@@ -62,7 +62,7 @@ export function createHasher(wasmExports) {
 
     // Each time we interact with wasm, it may have mutated our state so we'll
     // need to read it back into our closed copy.
-    state.set(memory.slice(0, size));
+    state.set(memory.subarray(0, size));
 
     return {
       update(input) {
@@ -78,7 +78,7 @@ export function createHasher(wasmExports) {
           length = input.byteLength;
         }
         update(0, size, length);
-        state.set(memory.slice(0, size));
+        state.set(memory.subarray(0, size));
         return this;
       },
       digest() {
